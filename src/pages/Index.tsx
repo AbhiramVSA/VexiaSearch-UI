@@ -2,109 +2,118 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FileText, MessageSquare, Database, Rocket, Shield, Upload, Stars, Sparkles, Zap, Brain, Globe, Layers } from "lucide-react";
+import { FileText, MessageSquare, Database, Code, Shield, Upload, Terminal, Cpu, Network, Layers, Zap, Brain } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 relative overflow-hidden">
-      {/* Dynamic space background with more elements */}
+    <div className="min-h-screen bg-zinc-950 relative overflow-hidden">
+      {/* Minimal geometric background */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-3 h-3 bg-white rounded-full animate-pulse opacity-80"></div>
-        <div className="absolute top-32 right-20 w-2 h-2 bg-blue-300 rounded-full animate-ping"></div>
-        <div className="absolute bottom-40 left-1/4 w-4 h-4 bg-purple-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/4 right-1/3 w-2 h-2 bg-white rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 right-10 w-3 h-3 bg-indigo-300 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/6 w-2 h-2 bg-cyan-300 rounded-full animate-ping"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-white rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 left-1/3 w-1 h-1 bg-yellow-300 rounded-full animate-ping"></div>
-        <div className="absolute top-16 left-2/3 w-2 h-2 bg-pink-300 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-10 w-1 h-1 bg-green-300 rounded-full animate-ping"></div>
+        <div className="absolute top-20 left-1/4 w-px h-32 bg-zinc-800/50"></div>
+        <div className="absolute top-40 right-1/3 w-32 h-px bg-zinc-800/50"></div>
+        <div className="absolute bottom-1/3 left-1/6 w-24 h-px bg-zinc-700/50"></div>
+        <div className="absolute top-1/2 right-1/4 w-px h-24 bg-zinc-800/50"></div>
         
-        {/* Floating geometric shapes */}
-        <div className="absolute top-1/4 left-1/4 w-8 h-8 border border-purple-400/30 rotate-45 animate-float"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-6 h-6 border border-cyan-400/30 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-2/3 left-1/6 w-4 h-8 bg-gradient-to-b from-purple-500/20 to-transparent animate-float" style={{animationDelay: '2s'}}></div>
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="w-full h-full" style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
       </div>
 
-      {/* Unique navigation with floating design */}
-      <nav className="border-b border-purple-500/30 bg-black/20 backdrop-blur-md sticky top-0 z-50">
+      {/* Technical navigation */}
+      <nav className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-600 rounded-xl flex items-center justify-center animate-glow">
-                  <Rocket className="w-7 h-7 text-white animate-float" />
-                </div>
+              <div className="w-8 h-8 bg-zinc-900 border border-zinc-700 flex items-center justify-center">
+                <Terminal className="w-4 h-4 text-zinc-400" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Cosmic RAG</h1>
-                <p className="text-xs text-purple-300">Portal</p>
+                <h1 className="text-lg font-mono text-zinc-100">RAG.CORE</h1>
+                <p className="text-xs text-zinc-500 font-mono">v2.4.1</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6">
-              <Button variant="ghost" className="text-white hover:bg-purple-500/20 transition-all duration-300 hover:scale-105">
-                Sign In
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" className="text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900 font-mono text-sm">
+                AUTH
               </Button>
-              <Button className="bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-600 hover:from-purple-700 hover:via-indigo-700 hover:to-cyan-700 text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/50">
-                Get Started
+              <Button className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono text-sm">
+                INITIALIZE
               </Button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Unique hero section with diagonal layout */}
-      <section className="relative z-10 py-32 px-4 sm:px-6 lg:px-8">
+      {/* Technical hero section */}
+      <section className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left side - Text content */}
             <div className="space-y-8">
               <div className="flex items-center space-x-2">
-                <Badge variant="secondary" className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-purple-300 border-purple-500/30 px-4 py-2">
-                  <Brain className="w-4 h-4 mr-2" />
-                  Neural Document Intelligence
+                <Badge variant="outline" className="border-zinc-700 text-zinc-400 font-mono text-xs">
+                  <Brain className="w-3 h-3 mr-1" />
+                  NEURAL.PROCESSING.MODULE
                 </Badge>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                <span className="text-white block animate-fade-in">Transform</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-indigo-400 block animate-fade-in" style={{animationDelay: '0.2s'}}>
-                  Documents
-                </span>
-                <span className="text-white block animate-fade-in" style={{animationDelay: '0.4s'}}>Into Knowledge</span>
+              <h1 className="text-4xl md:text-6xl font-mono font-bold leading-tight">
+                <span className="text-zinc-100 block">DOCUMENT</span>
+                <span className="text-zinc-400 block">INTELLIGENCE</span>
+                <span className="text-zinc-600 block">FRAMEWORK</span>
               </h1>
               
-              <p className="text-xl text-purple-200 leading-relaxed max-w-lg animate-fade-in" style={{animationDelay: '0.6s'}}>
-                Harness the power of cosmic AI to unlock insights from your documents. 
-                Upload, analyze, and chat with your PDFs using advanced RAG technology.
-              </p>
+              <div className="space-y-4 font-mono text-sm text-zinc-400">
+                <p className="flex items-center">
+                  <span className="text-zinc-600 mr-2">$</span>
+                  Advanced retrieval-augmented generation protocol
+                </p>
+                <p className="flex items-center">
+                  <span className="text-zinc-600 mr-2">$</span>
+                  Multi-threaded document parsing engine
+                </p>
+                <p className="flex items-center">
+                  <span className="text-zinc-600 mr-2">$</span>
+                  Real-time semantic query processing
+                </p>
+              </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{animationDelay: '0.8s'}}>
-                <Button size="lg" className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/50">
-                  <Upload className="w-5 h-5 mr-2" />
-                  <a href="/upload">Launch Mission</a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono">
+                  <Upload className="w-4 h-4 mr-2" />
+                  <a href="/upload">DEPLOY</a>
                 </Button>
-                <Button variant="outline" size="lg" className="px-8 py-4 border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 backdrop-blur-sm">
-                  <a href="/demo">Explore Demo</a>
+                <Button variant="outline" size="lg" className="border-zinc-700 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 font-mono">
+                  <a href="/demo">SANDBOX</a>
                 </Button>
               </div>
             </div>
 
-            {/* Right side - Interactive visual */}
-            <div className="relative animate-fade-in" style={{animationDelay: '1s'}}>
-              <div className="relative w-full h-96">
-                {/* Central orb */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-600 rounded-full animate-glow opacity-80"></div>
-                
-                {/* Orbiting elements */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-purple-400/30 rounded-full animate-spin" style={{animationDuration: '20s'}}>
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full"></div>
-                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-indigo-400 to-cyan-400 rounded-full"></div>
-                </div>
-                
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-cyan-400/20 rounded-full animate-spin" style={{animationDuration: '30s', animationDirection: 'reverse'}}>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full"></div>
-                  <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full"></div>
+            {/* Technical visualization */}
+            <div className="relative">
+              <div className="relative w-full h-80 border border-zinc-800 bg-zinc-900/50">
+                <div className="absolute inset-4 border border-zinc-700">
+                  <div className="w-full h-full relative">
+                    {/* Data flow visualization */}
+                    <div className="absolute top-4 left-4 w-3 h-3 bg-zinc-100 animate-pulse"></div>
+                    <div className="absolute top-4 left-8 w-16 h-px bg-zinc-600"></div>
+                    <div className="absolute top-4 left-24 w-3 h-3 border border-zinc-600"></div>
+                    
+                    <div className="absolute top-8 left-4 w-px h-8 bg-zinc-600"></div>
+                    <div className="absolute top-16 left-4 w-20 h-px bg-zinc-600"></div>
+                    <div className="absolute top-16 left-24 w-3 h-3 border border-zinc-600"></div>
+                    
+                    {/* Terminal-like output */}
+                    <div className="absolute bottom-4 left-4 right-4 space-y-1 font-mono text-xs text-zinc-500">
+                      <div>$ rag.process(document.pdf)</div>
+                      <div className="text-zinc-600">parsing... [████████████] 100%</div>
+                      <div className="text-zinc-600">indexing... [████████████] 100%</div>
+                      <div>$ ready for queries</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,93 +121,91 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Unique features section with hexagonal grid */}
+      {/* Technical features grid */}
       <section className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2">
-              <Globe className="w-4 h-4 mr-2" />
-              Cosmic Features
+          <div className="text-center mb-16">
+            <Badge variant="outline" className="mb-6 border-zinc-700 text-zinc-400 font-mono text-xs">
+              <Cpu className="w-3 h-3 mr-1" />
+              SYSTEM.MODULES
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Beyond Traditional
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"> Document Processing</span>
+            <h2 className="text-3xl md:text-4xl font-mono font-bold text-zinc-100 mb-4">
+              CORE COMPONENTS
             </h2>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-              Experience the next generation of document intelligence with features that transcend conventional limitations.
+            <p className="text-zinc-400 font-mono text-sm max-w-2xl mx-auto">
+              Engineered for high-performance document intelligence operations
             </p>
           </div>
 
-          {/* Hexagonal feature grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <Card className="group bg-black/30 border-purple-500/30 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-500 transform hover:scale-105 hover:rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce">
-                  <FileText className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <FileText className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Neural Document Processing</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Advanced PDF parsing with quantum-level text extraction and intelligent content mapping across dimensional layers.
+                <CardTitle className="text-zinc-100 font-mono text-sm">PARSER.ENGINE</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  Multi-format document extraction with OCR capabilities and structured data mapping
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="group bg-black/30 border-cyan-500/30 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:-rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce" style={{animationDelay: '0.1s'}}>
-                  <MessageSquare className="w-8 h-8 text-white" />
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <MessageSquare className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Conversational AI Interface</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Engage in natural conversations with your documents using advanced RAG technology and cosmic intelligence networks.
+                <CardTitle className="text-zinc-100 font-mono text-sm">QUERY.INTERFACE</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  Natural language processing with context-aware response generation and memory persistence
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="group bg-black/30 border-indigo-500/30 backdrop-blur-sm hover:border-indigo-400/50 transition-all duration-500 transform hover:scale-105 hover:rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce" style={{animationDelay: '0.2s'}}>
-                  <Database className="w-8 h-8 text-white" />
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <Database className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Temporal Session Management</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Maintain conversation continuity across time and space with persistent memory and contextual understanding.
+                <CardTitle className="text-zinc-100 font-mono text-sm">VECTOR.STORE</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  High-dimensional embedding storage with semantic similarity search algorithms
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="group bg-black/30 border-orange-500/30 backdrop-blur-sm hover:border-orange-400/50 transition-all duration-500 transform hover:scale-105 hover:-rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce" style={{animationDelay: '0.3s'}}>
-                  <Zap className="w-8 h-8 text-white" />
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <Network className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Quantum Processing Speed</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Lightning-fast document analysis with parallel processing across multiple dimensional computation layers.
+                <CardTitle className="text-zinc-100 font-mono text-sm">RETRIEVAL.SYSTEM</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  Optimized relevance scoring with multi-stage filtering and ranking mechanisms
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="group bg-black/30 border-green-500/30 backdrop-blur-sm hover:border-green-400/50 transition-all duration-500 transform hover:scale-105 hover:rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce" style={{animationDelay: '0.4s'}}>
-                  <Shield className="w-8 h-8 text-white" />
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <Shield className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Cosmic Security Protocol</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Multi-dimensional encryption with quantum entanglement security ensuring your data remains protected across all realities.
+                <CardTitle className="text-zinc-100 font-mono text-sm">SECURITY.LAYER</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  End-to-end encryption with access control and audit logging capabilities
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="group bg-black/30 border-pink-500/30 backdrop-blur-sm hover:border-pink-400/50 transition-all duration-500 transform hover:scale-105 hover:-rotate-1">
-              <CardHeader className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:animate-bounce" style={{animationDelay: '0.5s'}}>
-                  <Layers className="w-8 h-8 text-white" />
+            <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
+              <CardHeader>
+                <div className="w-8 h-8 border border-zinc-700 flex items-center justify-center mb-3">
+                  <Layers className="w-4 h-4 text-zinc-400" />
                 </div>
-                <CardTitle className="text-white text-xl">Dimensional File Organization</CardTitle>
-                <CardDescription className="text-purple-200">
-                  Organize your documents across multiple dimensions with intelligent categorization and cosmic file management.
+                <CardTitle className="text-zinc-100 font-mono text-sm">SESSION.MANAGER</CardTitle>
+                <CardDescription className="text-zinc-500 font-mono text-xs">
+                  Persistent conversation state with contextual memory and history management
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -206,34 +213,28 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Unique CTA section with flowing design */}
+      {/* Technical CTA section */}
       <section className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="relative bg-gradient-to-r from-purple-900/50 via-indigo-900/50 to-cyan-900/50 rounded-3xl p-12 backdrop-blur-sm border border-purple-500/30 overflow-hidden">
-            {/* Flowing background elements */}
-            <div className="absolute inset-0">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-xl animate-float"></div>
-              <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-br from-cyan-600/20 to-transparent rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-indigo-600/20 to-transparent rounded-full blur-xl animate-float" style={{animationDelay: '1s'}}></div>
-            </div>
-            
-            <div className="relative text-center space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                Ready to Transcend
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400"> Digital Boundaries?</span>
-              </h2>
-              <p className="text-xl text-purple-200 max-w-3xl mx-auto">
-                Join the cosmic revolution of document intelligence. Transform how you interact with information 
-                and unlock insights that exist beyond conventional understanding.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-                <Button size="lg" className="px-10 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-600 hover:from-purple-700 hover:via-indigo-700 hover:to-cyan-700 text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/50 text-lg">
-                  <Rocket className="w-6 h-6 mr-3" />
-                  Begin Cosmic Journey
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-zinc-900/50 border border-zinc-800 p-12">
+            <div className="text-center space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-mono font-bold text-zinc-100">
+                  INITIALIZE SYSTEM
+                </h2>
+                <p className="text-zinc-400 font-mono text-sm max-w-2xl mx-auto">
+                  Deploy advanced document intelligence infrastructure with enterprise-grade processing capabilities
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono">
+                  <Code className="w-4 h-4 mr-2" />
+                  EXECUTE DEPLOYMENT
                 </Button>
-                <Button variant="outline" size="lg" className="px-10 py-4 border-2 border-purple-500/50 text-purple-300 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 backdrop-blur-sm text-lg">
-                  <Stars className="w-6 h-6 mr-3" />
-                  Explore the Universe
+                <Button variant="outline" size="lg" className="border-zinc-700 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 font-mono">
+                  <Terminal className="w-4 h-4 mr-2" />
+                  ACCESS DOCUMENTATION
                 </Button>
               </div>
             </div>
@@ -241,50 +242,49 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Unique footer with cosmic design */}
-      <footer className="relative z-10 bg-black/60 text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-purple-500/30 backdrop-blur-sm">
+      {/* Technical footer */}
+      <footer className="relative z-10 bg-zinc-950 border-t border-zinc-800 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-600 rounded-xl flex items-center justify-center animate-pulse">
-                  <Rocket className="w-6 h-6 text-white" />
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-zinc-900 border border-zinc-700 flex items-center justify-center">
+                  <Terminal className="w-3 h-3 text-zinc-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Cosmic RAG Portal</h3>
-                  <p className="text-sm text-purple-300">Beyond Intelligence</p>
+                  <h3 className="font-mono text-zinc-100 text-sm">RAG.CORE</h3>
+                  <p className="text-xs text-zinc-500 font-mono">ENTERPRISE</p>
                 </div>
               </div>
-              <p className="text-purple-300 leading-relaxed">
-                Transcending the boundaries of traditional document processing through cosmic AI technology 
-                and dimensional intelligence networks.
+              <p className="text-zinc-500 font-mono text-xs leading-relaxed">
+                Advanced document intelligence framework for enterprise-scale knowledge management systems
               </p>
             </div>
             
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-white">Cosmic Features</h4>
-              <ul className="space-y-2 text-purple-300">
-                <li className="hover:text-white transition-colors cursor-pointer">Neural Document Processing</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Quantum Chat Interface</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Dimensional File Management</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Temporal Session History</li>
+            <div className="space-y-3">
+              <h4 className="font-mono text-zinc-400 text-xs">MODULES</h4>
+              <ul className="space-y-1 text-zinc-600 font-mono text-xs">
+                <li className="hover:text-zinc-400 cursor-pointer">parser.engine</li>
+                <li className="hover:text-zinc-400 cursor-pointer">query.interface</li>
+                <li className="hover:text-zinc-400 cursor-pointer">vector.store</li>
+                <li className="hover:text-zinc-400 cursor-pointer">security.layer</li>
               </ul>
             </div>
             
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-white">Mission Control</h4>
-              <ul className="space-y-2 text-purple-300">
-                <li className="hover:text-white transition-colors cursor-pointer">Launch Documentation</li>
-                <li className="hover:text-white transition-colors cursor-pointer">API Integration</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Support Channel</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Community Hub</li>
+            <div className="space-y-3">
+              <h4 className="font-mono text-zinc-400 text-xs">RESOURCES</h4>
+              <ul className="space-y-1 text-zinc-600 font-mono text-xs">
+                <li className="hover:text-zinc-400 cursor-pointer">api.documentation</li>
+                <li className="hover:text-zinc-400 cursor-pointer">integration.guide</li>
+                <li className="hover:text-zinc-400 cursor-pointer">support.channel</li>
+                <li className="hover:text-zinc-400 cursor-pointer">status.monitor</li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-purple-500/30 pt-8 text-center">
-            <p className="text-purple-300">
-              © 2024 Cosmic RAG Portal. Powered by interdimensional intelligence and quantum computing networks.
+          <div className="border-t border-zinc-800 mt-8 pt-6 text-center">
+            <p className="text-zinc-600 font-mono text-xs">
+              © 2024 RAG.CORE | Enterprise Document Intelligence Framework
             </p>
           </div>
         </div>
