@@ -18,6 +18,7 @@ export type Database = {
           id: string
           metadata: Json | null
           source_file: string
+          user_id: string | null
         }
         Insert: {
           content: string
@@ -27,6 +28,7 @@ export type Database = {
           id?: string
           metadata?: Json | null
           source_file: string
+          user_id?: string | null
         }
         Update: {
           content?: string
@@ -36,6 +38,7 @@ export type Database = {
           id?: string
           metadata?: Json | null
           source_file?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -68,6 +71,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      match_documents: {
+        Args: {
+          query_embedding: string
+          match_count: number
+          p_user_id: string
+        }
+        Returns: {
+          id: string
+          content: string
+          content_type: string
+          source_file: string
+          similarity: number
+        }[]
+      }
       search_similar_documents: {
         Args: {
           query_embedding: string

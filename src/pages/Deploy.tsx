@@ -1,5 +1,5 @@
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +13,7 @@ const Deploy = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -54,6 +55,10 @@ const Deploy = () => {
 
     setFiles(prev => [...prev, ...selectedFiles]);
     toast.success(`Added ${selectedFiles.length} PDF file(s)`);
+  };
+
+  const triggerFileSelect = () => {
+    fileInputRef.current?.click();
   };
 
   const removeFile = (index: number) => {
@@ -167,18 +172,20 @@ const Deploy = () => {
                       or click to select files
                     </p>
                     <input
+                      ref={fileInputRef}
                       type="file"
                       multiple
                       accept=".pdf"
                       onChange={handleFileSelect}
                       className="hidden"
-                      id="file-upload"
                     />
-                    <label htmlFor="file-upload">
-                      <Button variant="outline" className="border-zinc-700 text-zinc-300 hover:bg-zinc-800 font-mono text-xs">
-                        SELECT.FILES
-                      </Button>
-                    </label>
+                    <Button 
+                      variant="outline" 
+                      className="border-zinc-700 text-zinc-300 hover:bg-zinc-800 font-mono text-xs"
+                      onClick={triggerFileSelect}
+                    >
+                      SELECT.FILES
+                    </Button>
                   </div>
 
                   {/* File List */}
