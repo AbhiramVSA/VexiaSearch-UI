@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -41,7 +40,7 @@ const Index = () => {
                 AUTH
               </Button>
               <Button className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono text-sm">
-                INITIALIZE
+                <a href="/deploy">INITIALIZE</a>
               </Button>
             </div>
           </div>
@@ -84,10 +83,10 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono">
                   <Upload className="w-4 h-4 mr-2" />
-                  <a href="/upload">DEPLOY</a>
+                  <a href="/deploy">DEPLOY</a>
                 </Button>
                 <Button variant="outline" size="lg" className="border-zinc-700 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 font-mono">
-                  <a href="/demo">SANDBOX</a>
+                  <a href="/chat">QUERY.INTERFACE</a>
                 </Button>
               </div>
             </div>
@@ -230,11 +229,11 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-mono">
                   <Code className="w-4 h-4 mr-2" />
-                  EXECUTE DEPLOYMENT
+                  <a href="/deploy">EXECUTE DEPLOYMENT</a>
                 </Button>
                 <Button variant="outline" size="lg" className="border-zinc-700 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100 font-mono">
                   <Terminal className="w-4 h-4 mr-2" />
-                  ACCESS DOCUMENTATION
+                  <a href="/chat">ACCESS INTERFACE</a>
                 </Button>
               </div>
             </div>
