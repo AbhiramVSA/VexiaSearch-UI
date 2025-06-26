@@ -54,8 +54,8 @@ export const ragService = {
     try {
       const formData = new FormData();
       
-      files.forEach((file, index) => {
-        formData.append(`file_${index}`, file);
+      files.forEach(file => {
+        formData.append(`files`, file);
       });
       
       formData.append('user_id', userId);
