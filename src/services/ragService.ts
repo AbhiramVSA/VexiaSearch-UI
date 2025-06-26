@@ -2,8 +2,8 @@
 // Configuration for external RAG endpoints
 const RAG_CONFIG = {
   // Update these URLs to match your actual endpoint IPs
-  CHAT_ENDPOINT: 'http://YOUR_CHAT_IP:PORT/chat',
-  DEPLOY_ENDPOINT: 'http://YOUR_DEPLOY_IP:PORT/deploy'
+  CHAT_ENDPOINT: 'http://127.0.0.1:8000/chat',
+  DEPLOY_ENDPOINT: 'http://127.0.0.1:8000/deploy'
 };
 
 export interface ChatMessage {
