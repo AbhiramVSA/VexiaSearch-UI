@@ -4,20 +4,31 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare, Terminal, Send, Brain, Database, User, Bot } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from '@/hooks/useAuth';
+import { ragService } from '@/services/ragService';
+import { toast } from 'sonner';
+
+interface Message {
+  id: number;
+  type: 'system' | 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+}
 
 const Chat = () => {
-  const [messages, setMessages] = useState([
+  const { user } = useAuth();
+  const [messages, setMessages] = useState<Message[]>([
     { id: 1, type: 'system', content: '$ rag.system initialized successfully', timestamp: '14:32:01' },
-    { id: 2, type: 'system', content: '$ vector.database connected [documents: 0]', timestamp: '14:32:02' },
+    { id: 2, type: 'system', content: '$ vector.database connected [endpoint: ready]', timestamp: '14:32:02' },
     { id: 3, type: 'system', content: '$ query.interface ready for input', timestamp: '14:32:03' }
   ]);
   const [input, setInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !user) return;
     
-    const userMessage = {
+    const userMessage: Message = {
       id: Date.now(),
       type: 'user',
       content: input,
@@ -28,18 +39,31 @@ const Chat = () => {
     setInput('');
     setIsProcessing(true);
     
-    // Simulate processing
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const botResponse = {
-      id: Date.now() + 1,
-      type: 'assistant',
-      content: 'Query processed. No documents found in vector database. Please deploy documents first using the deployment interface.',
-      timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
-    };
-    
-    setMessages(prev => [...prev, botResponse]);
-    setIsProcessing(false);
+    try {
+      const response = await ragService.sendMessage(input, user.id);
+      
+      const botResponse: Message = {
+        id: Date.now() + 1,
+        type: 'assistant',
+        content: response,
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      };
+      
+      setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorResponse: Message = {
+        id: Date.now() + 1,
+        type: 'assistant',
+        content: `Error: ${error instanceof Error ? error.message : 'Failed to get response'}. Please check your RAG endpoint configuration.`,
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      };
+      
+      setMessages(prev => [...prev, errorResponse]);
+      toast.error('Failed to get response from RAG system');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -148,7 +172,7 @@ const Chat = () => {
                     {isProcessing && (
                       <div className="flex items-start space-x-3">
                         <div className="w-6 h-6 border border-zinc-700 flex items-center justify-center">
-                          <Bot className="w-3 h-3 text-zinc-400 animate-pulse-subtle" />
+                          <Bot className="w-3 h-3 text-zinc-400 animate-pulse" />
                         </div>
                         <div className="bg-zinc-800/50 text-zinc-400 p-3 font-mono text-xs">
                           <p>processing query...</p>
@@ -186,21 +210,39 @@ const Chat = () => {
                 <CardHeader>
                   <CardTitle className="text-zinc-100 font-mono text-sm flex items-center">
                     <Database className="w-4 h-4 mr-2" />
-                    VECTOR.STATUS
+                    SYSTEM.STATUS
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between items-center font-mono text-xs">
-                    <span className="text-zinc-400">DOCUMENTS</span>
-                    <span className="text-zinc-500">0</span>
+                    <span className="text-zinc-400">ENDPOINT</span>
+                    <span className="text-green-400">READY</span>
                   </div>
                   <div className="flex justify-between items-center font-mono text-xs">
-                    <span className="text-zinc-400">EMBEDDINGS</span>
-                    <span className="text-zinc-500">0</span>
+                    <span className="text-zinc-400">USER.AUTH</span>
+                    <span className="text-green-400">ACTIVE</span>
                   </div>
                   <div className="flex justify-between items-center font-mono text-xs">
-                    <span className="text-zinc-400">INDEX.SIZE</span>
-                    <span className="text-zinc-500">0KB</span>
+                    <span className="text-zinc-400">VECTOR.DB</span>
+                    <span className="text-green-400">ONLINE</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-zinc-900/50 border-zinc-800">
+                <CardHeader>
+                  <CardTitle className="text-zinc-100 font-mono text-sm">USER.SESSION</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-mono text-xs text-zinc-400 space-y-1">
+                    <div className="flex justify-between">
+                      <span>USER.ID</span>
+                      <span className="text-zinc-500">{user?.id.slice(0, 8)}...</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>EMAIL</span>
+                      <span className="text-zinc-500">{user?.email?.slice(0, 12)}...</span>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -211,8 +253,8 @@ const Chat = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="font-mono text-xs text-zinc-500">
-                    <p>No context available</p>
-                    <p className="mt-2">Deploy documents to enable contextual queries</p>
+                    <p>Contextual queries enabled</p>
+                    <p className="mt-2">Deploy documents for enhanced retrieval</p>
                   </div>
                 </CardContent>
               </Card>
